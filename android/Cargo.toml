@@ -1,0 +1,33 @@
+[package]
+name = "xenomit-client-android"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[lib]
+name = "main"
+crate-type = ["cdylib"]
+
+[dependencies]
+xenomit-raylib-client = { path = ".." }
+
+[package.metadata.android]
+package = "com.xenomit.client"
+apk_name = "xenomit-client"
+build_targets = ["aarch64-linux-android"]
+
+[package.metadata.android.sdk]
+min_sdk_version = 23
+target_sdk_version = 35
+
+[package.metadata.android.application]
+label = "Xenomit"
+theme = "@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen"
+uses_cleartext_traffic = false
+
+[package.metadata.android.application.activity]
+orientation = "landscape"
+config_changes = "orientation|keyboardHidden|screenSize"
+
+[[package.metadata.android.uses_permission]]
+name = "android.permission.INTERNET"
