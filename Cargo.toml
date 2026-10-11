@@ -1,0 +1,70 @@
+[package]
+name = "xenomit-raylib-client"
+version = "0.1.0"
+edition = "2021"
+description = "Native DarkOrbit client built on raylib — reimplementation of the Flash client (game_resources/main.swf)"
+
+[features]
+default = []
+
+[dependencies]
+raylib = { version = "5", features = ["noscreenshot", "nogif"] }
+xenomit-packet-client = { path = "../xenomit-packet-client" }
+xenomit_backpage = { path = "../xenomit-backpage" }
+swf = { path = "../ruffle/swf" }
+tokio = { version = "1", features = ["full"] }
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls", "cookies", "json", "gzip"] }
+roxmltree = "0.20"
+image = { version = "0.25", default-features = false, features = ["png", "jpeg", "tiff"] }
+jpegxr = { git = "https://github.com/ruffle-rs/jpegxr", rev = "86cc1749d493288f53d7290ac3eb7082c475b5d9" }
+lzma-rs = "0.3"
+tiny-skia = "0.11"
+# VP6 embedded-video decoding, pinned to the same revisions Ruffle uses.
+nihav_core = { git = "https://github.com/ruffle-rs/nihav-vp6", rev = "12d0bdf10a85641dc2de3d6900c747894431ed77" }
+nihav_codec_support = { git = "https://github.com/ruffle-rs/nihav-vp6", rev = "12d0bdf10a85641dc2de3d6900c747894431ed77" }
+nihav_duck = { git = "https://github.com/ruffle-rs/nihav-vp6", rev = "12d0bdf10a85641dc2de3d6900c747894431ed77" }
+h263-rs-yuv = { git = "https://github.com/ruffle-rs/h263-rs", rev = "27ee833ca97aadd2a14cf0b3b4ec8b53f31ff6bd" }
+flate2 = "1"
+anyhow = "1"
+thiserror = "2"
+log = "0.4"
+env_logger = "0.11"
+clap = { version = "4", features = ["derive"] }
+# Window layout persistence (`{assets_dir}/window_layout.json`).
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[patch.crates-io]
+# raylib-sys 5.5.1 parses the Android target triple as an API level
+# ("android" instead of "android-26"); the small local patch reads an
+# explicit API level and defaults to 23 to match the APK min SDK.
+raylib-sys = { path = "vendor/raylib-sys" }
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+
+[lib]
+name = "xenomit_client"
+path = "src/lib.rs"
+
+[[bin]]
+name = "xenomit-client"
+path = "src/bin/client.rs"
+
+[[bin]]
+name = "do-extract"
+path = "src/bin/extract.rs"
+
+[[bin]]
+name = "asset-preview"
+path = "src/bin/asset-preview.rs"
+
+[[bin]]
+name = "swf-catalog"
+path = "src/bin/swf-catalog.rs"
+
+[workspace]
+members = ["android"]
+default-members = ["."]
+resolver = "2"

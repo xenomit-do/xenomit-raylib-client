@@ -1,0 +1,1 @@
+Downloaded game assets and the private live capture are retained only in the original local checkout. They are excluded from this public repository. Tests using tests/fixtures require a separately supplied, appropriately licensed fixture set. Normal runtime asset downloads remain configured by the client.
