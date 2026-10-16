@@ -2128,6 +2128,7 @@ checksum = "13c2bddecc57b384dee18652358fb23172facb8a2c51ccc10d74c157bdea3292"
 [[package]]
 name = "swf"
 version = "0.3.0"
+source = "git+https://github.com/ruffle-rs/ruffle?tag=v0.6.0#cac5c99ce4a17e606f4ee3090389bb878f852055"
 dependencies = [
  "bitflags 2.13.2",
  "bitstream-io",
@@ -2745,6 +2746,7 @@ dependencies = [
 [[package]]
 name = "xenomit-packet-client"
 version = "0.1.0"
+source = "git+https://github.com/xenomit-do/xenomit-packet-client?tag=v0.1.0#9be2dd2ce1229aebfc0fae5bb193de0c55430939"
 dependencies = [
  "base64 0.22.1",
  "thiserror 2.0.21",
@@ -2783,6 +2785,7 @@ dependencies = [
 [[package]]
 name = "xenomit_backpage"
 version = "0.1.0"
+source = "git+https://github.com/xenomit-do/xenomit-backpage?tag=v0.1.0#a7d1588f397cd41fd945cf90fa2c2c08f902ec2b"
 dependencies = [
  "base64 0.22.1",
  "flate2",

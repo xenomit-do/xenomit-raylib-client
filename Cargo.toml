@@ -9,9 +9,9 @@ default = []
 
 [dependencies]
 raylib = { version = "5", features = ["noscreenshot", "nogif"] }
-xenomit-packet-client = { path = "../xenomit-packet-client" }
-xenomit_backpage = { path = "../xenomit-backpage" }
-swf = { path = "../ruffle/swf" }
+xenomit-packet-client = { git = "https://github.com/xenomit-do/xenomit-packet-client", tag = "v0.1.0" }
+xenomit_backpage = { git = "https://github.com/xenomit-do/xenomit-backpage", tag = "v0.1.0" }
+swf = { git = "https://github.com/ruffle-rs/ruffle", tag = "v0.6.0", package = "swf" }
 tokio = { version = "1", features = ["full"] }
 reqwest = { version = "0.12", default-features = false, features = ["rustls-tls", "cookies", "json", "gzip"] }
 roxmltree = "0.20"
